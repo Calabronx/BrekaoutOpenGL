@@ -54,6 +54,9 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files\src\graphics</Filter>
     </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files\src\textures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glad\glad.h">
@@ -66,6 +69,9 @@
       <Filter>Source Files\src\include</Filter>
     </ClInclude>
     <ClInclude Include="glad\KHR\khrplatform.h">
+      <Filter>Source Files\src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
       <Filter>Source Files\src\include</Filter>
     </ClInclude>
   </ItemGroup>
