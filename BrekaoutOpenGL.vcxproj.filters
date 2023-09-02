@@ -13,36 +13,60 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{f89baaad-3742-4887-8f74-9ae84ac0fc88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\shaders">
+      <UniqueIdentifier>{54c4326f-b5e2-4856-bee0-181da1d2fc53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\textures">
+      <UniqueIdentifier>{25fe661c-0d64-4829-b589-5269ac082920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\models">
+      <UniqueIdentifier>{59b7d2b3-2a2a-4d65-82af-0189345d3fd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\include">
+      <UniqueIdentifier>{89296e33-6eb0-470d-a391-f0ea2cc82b3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\graphics">
+      <UniqueIdentifier>{54f20b45-66db-4c88-a606-440484ac9fad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\core">
+      <UniqueIdentifier>{f0091cba-cf8f-4118-95a8-504291d1b771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\app">
+      <UniqueIdentifier>{54e56bb1-16fa-4fc1-8bf4-4ed9dda06570}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BrekaoutOpenGL.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\src\include</Filter>
     </ClCompile>
     <ClCompile Include="glad\glad.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="BrekaoutOpenGL.cpp">
+      <Filter>Source Files\src\app</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\src\core</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\src\graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="glad\glad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="glad\KHR\khrplatform.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Shader.h">
+      <Filter>Source Files\src\include</Filter>
     </ClInclude>
     <ClInclude Include="glm\glm.hpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="glad\KHR\khrplatform.h">
+      <Filter>Source Files\src\include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
