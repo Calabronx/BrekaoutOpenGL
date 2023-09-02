@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/glad/glad.c
+/glm/glm.hpp
+/glad/KHR/khrplatform.h
