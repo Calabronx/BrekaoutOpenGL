@@ -39,14 +39,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.h">
-      <Filter>Source Files\src\include</Filter>
-    </ClCompile>
     <ClCompile Include="glad\glad.c">
       <Filter>Source Files\src</Filter>
-    </ClCompile>
-    <ClCompile Include="BrekaoutOpenGL.cpp">
-      <Filter>Source Files\src\app</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\src\core</Filter>
@@ -57,13 +51,16 @@
     <ClCompile Include="texture.cpp">
       <Filter>Source Files\src\textures</Filter>
     </ClCompile>
+    <ClCompile Include="Game.h">
+      <Filter>Source Files\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="BrekaoutOpenGL.cpp">
+      <Filter>Source Files\src\app</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glad\glad.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Source Files\src\include</Filter>
     </ClInclude>
     <ClInclude Include="glm\glm.hpp">
       <Filter>Source Files\src\include</Filter>
@@ -71,8 +68,11 @@
     <ClInclude Include="glad\KHR\khrplatform.h">
       <Filter>Source Files\src\include</Filter>
     </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Source Files\src\graphics</Filter>
+    </ClInclude>
     <ClInclude Include="texture.h">
-      <Filter>Source Files\src\include</Filter>
+      <Filter>Source Files\src\textures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
