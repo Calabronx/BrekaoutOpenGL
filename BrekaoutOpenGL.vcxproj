@@ -140,10 +140,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BrekaoutOpenGL.cpp" />
+    <ClCompile Include="program.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Game.h" />
     <ClCompile Include="glad\glad.c" />
+    <ClCompile Include="resource_manager.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
@@ -151,6 +152,8 @@
     <ClInclude Include="glad\glad.h" />
     <ClInclude Include="glad\KHR\khrplatform.h" />
     <ClInclude Include="glm\glm.hpp" />
+    <ClInclude Include="includes\stb_image.h" />
+    <ClInclude Include="resource_manager.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="texture.h" />
   </ItemGroup>

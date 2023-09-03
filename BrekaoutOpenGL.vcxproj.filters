@@ -37,6 +37,9 @@
     <Filter Include="Source Files\src\app">
       <UniqueIdentifier>{54e56bb1-16fa-4fc1-8bf4-4ed9dda06570}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\src\util">
+      <UniqueIdentifier>{6a038238-c87a-445c-b337-a66f3088986e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad\glad.c">
@@ -54,8 +57,11 @@
     <ClCompile Include="Game.h">
       <Filter>Source Files\src\core</Filter>
     </ClCompile>
-    <ClCompile Include="BrekaoutOpenGL.cpp">
+    <ClCompile Include="program.cpp">
       <Filter>Source Files\src\app</Filter>
+    </ClCompile>
+    <ClCompile Include="resource_manager.cpp">
+      <Filter>Source Files\src\util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="texture.h">
       <Filter>Source Files\src\textures</Filter>
+    </ClInclude>
+    <ClInclude Include="resource_manager.h">
+      <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\stb_image.h">
+      <Filter>Source Files\src\include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
