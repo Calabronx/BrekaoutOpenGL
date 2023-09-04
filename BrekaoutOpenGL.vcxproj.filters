@@ -51,9 +51,6 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files\src\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="texture.cpp">
-      <Filter>Source Files\src\textures</Filter>
-    </ClCompile>
     <ClCompile Include="Game.h">
       <Filter>Source Files\src\core</Filter>
     </ClCompile>
@@ -61,6 +58,12 @@
       <Filter>Source Files\src\app</Filter>
     </ClCompile>
     <ClCompile Include="resource_manager.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="sprite_renderer.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
       <Filter>Source Files\src\util</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,17 +77,33 @@
     <ClInclude Include="glad\KHR\khrplatform.h">
       <Filter>Source Files\src\include</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Source Files\src\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="texture.h">
-      <Filter>Source Files\src\textures</Filter>
-    </ClInclude>
-    <ClInclude Include="resource_manager.h">
-      <Filter>Source Files\src\util</Filter>
-    </ClInclude>
     <ClInclude Include="includes\stb_image.h">
       <Filter>Source Files\src\include</Filter>
     </ClInclude>
+    <ClInclude Include="sprite_renderer.h">
+      <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\resource_manager.h">
+      <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\texture.h">
+      <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\shader.h">
+      <Filter>Source Files\src\graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sprite_shader.vs">
+      <Filter>Source Files\src\shaders</Filter>
+    </None>
+    <None Include="sprite_frs.fs">
+      <Filter>Source Files\src\shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="awesomeface.png">
+      <Filter>Source Files\src\textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

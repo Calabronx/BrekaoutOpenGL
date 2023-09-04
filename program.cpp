@@ -1,9 +1,10 @@
 
-#include "glad/glad.h"
-#include <GLFW/glfw3.h>
-
+#define GLFW_INCLUDE_NONE
 #include "Game.h"
 #include "resource_manager.h"
+
+#include "glad/glad.h"
+#include <GLFW/glfw3.h>
 
 #include <iostream>
 
@@ -107,11 +108,6 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 			Breakout.Keys[key] = false;
 	}
 }
-//void processInput(GLFWwindow* window)
-//{
-//    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-//        glfwSetWindowShouldClose(window, true);
-//}
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
@@ -121,4 +117,5 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	// height will be significantly larger than specified on retina displays.
 	glViewport(0, 0, width, height);
 }
+
 
