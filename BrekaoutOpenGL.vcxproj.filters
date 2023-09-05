@@ -68,9 +68,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="glad\glad.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="glm\glm.hpp">
       <Filter>Source Files\src\include</Filter>
     </ClInclude>
@@ -92,18 +89,24 @@
     <ClInclude Include="includes\shader.h">
       <Filter>Source Files\src\graphics</Filter>
     </ClInclude>
+    <ClInclude Include="glad\glad.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="sprite_shader.vs">
-      <Filter>Source Files\src\shaders</Filter>
+    <None Include="sprite.frag">
+      <Filter>Source Files\src</Filter>
     </None>
-    <None Include="sprite_frs.fs">
-      <Filter>Source Files\src\shaders</Filter>
+    <None Include="sprite.vs">
+      <Filter>Source Files\src</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\Documents\Libros\OpenGL\texture\awesomeface.png">
+      <Filter>Source Files</Filter>
+    </Image>
     <Image Include="awesomeface.png">
-      <Filter>Source Files\src\textures</Filter>
+      <Filter>Source Files</Filter>
     </Image>
   </ItemGroup>
 </Project>

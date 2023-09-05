@@ -72,10 +72,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\includes;C:\BrekaoutOpenGL\lib;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\includes;C:\BrekaoutOpenGL\lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\includes;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\includes;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -160,10 +160,11 @@
     <ClInclude Include="sprite_renderer.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="sprite_frs.fs" />
-    <None Include="sprite_shader.vs" />
+    <None Include="sprite.frag" />
+    <None Include="sprite.vs" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\Documents\Libros\OpenGL\texture\awesomeface.png" />
     <Image Include="awesomeface.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -364,3 +364,14 @@ FodyWeavers.xsd
 /glad/glad.c
 /glm/glm.hpp
 /glad/KHR/khrplatform.h
+/glm/doc
+/glm/test
+/glm/util
+/glm/cmake/glm
+/glm/readme.md
+/glm/manual.md
+/glm/copying.txt
+/glm/CMakeLists.txt
+/glm/.travis.yml
+/glm/.gitignore
+/glm/.appveyor.yml

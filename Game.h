@@ -2,7 +2,7 @@
 #define  GAME_H
 
 //#include "glad/glad.h"
-#include <GLFW/glfw3.h>
+//#include <GLFW/glfw3.h>
 
 enum GameState {
 	GAME_ACTIVE,

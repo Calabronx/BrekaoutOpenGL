@@ -1,10 +1,10 @@
 
 #define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
+#include "glad/glad.h"
+
 #include "Game.h"
 #include "resource_manager.h"
-
-#include "glad/glad.h"
-#include <GLFW/glfw3.h>
 
 #include <iostream>
 
@@ -17,7 +17,7 @@ const unsigned int SCREEN_HEIGHT = 600;
 
 Game Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-int main()
+int main(int arc, char *argv[])
 {
 	// glfw: initialize and configure
 	// ------------------------------

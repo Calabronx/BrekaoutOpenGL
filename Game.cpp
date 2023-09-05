@@ -16,7 +16,7 @@ Game::~Game()
 
 void Game::Init()
 {
-	ResourceManager::LoadShader("shaders/sprite_shader.vs", "shaders/sprite_frs.frs", nullptr, "sprite");
+	ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
 
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width), static_cast<float>(this->Height),
 		0.0f, -1.0f, 1.0f);
@@ -37,9 +37,5 @@ void Game::Update(float dt)
 
 void Game::Render()
 {
-	//esta linea no compila
-	//Renderer->DrawSprite(ResourceManager::GetTexture("face"), glm::vec2(200.0f, 200.0f), glm::vec2(300.0f, 400.0f), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-	Texture2D myTexture;
-	myTexture = ResourceManager::GetTexture("face");
-	Renderer->DrawSprite(myTexture, glm::vec2(200.0f, 200.0f), glm::vec2(300.0f, 400.0f), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+	Renderer->DrawSprite(ResourceManager::GetTexture("face"), glm::vec2(200.0f, 200.0f), glm::vec2(300.0f, 400.0f), 45.0f, glm::vec3(0.0f, 1.0f, 0.0f));
 }
