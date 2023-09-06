@@ -66,6 +66,9 @@
     <ClCompile Include="texture.cpp">
       <Filter>Source Files\src\util</Filter>
     </ClCompile>
+    <ClCompile Include="game_level.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glm\glm.hpp">
@@ -90,6 +93,15 @@
       <Filter>Source Files\src\graphics</Filter>
     </ClInclude>
     <ClInclude Include="glad\glad.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object.h">
+      <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="game_level.h">
       <Filter>Source Files\src</Filter>
     </ClInclude>
   </ItemGroup>
