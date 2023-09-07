@@ -1,5 +1,6 @@
+#include "sprite_renderer.h"
+#include "game_object.h"
 #include "game_level.h"
-//#include "game_object.h"
 //#include "resource_manager.h"
 
 #include <fstream>

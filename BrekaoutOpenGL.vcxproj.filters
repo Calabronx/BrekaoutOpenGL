@@ -40,6 +40,9 @@
     <Filter Include="Source Files\src\util">
       <UniqueIdentifier>{6a038238-c87a-445c-b337-a66f3088986e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\src\levels">
+      <UniqueIdentifier>{dc1c11d7-260b-4704-b95d-c5f0e8025f37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad\glad.c">
@@ -50,9 +53,6 @@
     </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files\src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.h">
-      <Filter>Source Files\src\core</Filter>
     </ClCompile>
     <ClCompile Include="program.cpp">
       <Filter>Source Files\src\app</Filter>
@@ -67,6 +67,9 @@
       <Filter>Source Files\src\util</Filter>
     </ClCompile>
     <ClCompile Include="game_level.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
+    <ClCompile Include="game_object.cpp">
       <Filter>Source Files\src\util</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,14 +98,14 @@
     <ClInclude Include="glad\glad.h">
       <Filter>Source Files\src</Filter>
     </ClInclude>
-    <ClInclude Include="game_object.h">
-      <Filter>Source Files\src\util</Filter>
-    </ClInclude>
-    <ClInclude Include="game_object.cpp">
-      <Filter>Source Files\src\util</Filter>
+    <ClInclude Include="Game.h">
+      <Filter>Source Files\src\core</Filter>
     </ClInclude>
     <ClInclude Include="game_level.h">
-      <Filter>Source Files\src</Filter>
+      <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object.h">
+      <Filter>Source Files\src\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -120,5 +123,19 @@
     <Image Include="awesomeface.png">
       <Filter>Source Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="levels\one.lvl.txt">
+      <Filter>Source Files\src\levels</Filter>
+    </Text>
+    <Text Include="levels\three.lvl.txt">
+      <Filter>Source Files\src\levels</Filter>
+    </Text>
+    <Text Include="levels\two.lvl.txt">
+      <Filter>Source Files\src\levels</Filter>
+    </Text>
+    <Text Include="levels\four.lvl.txt">
+      <Filter>Source Files\src\levels</Filter>
+    </Text>
   </ItemGroup>
 </Project>

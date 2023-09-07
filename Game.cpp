@@ -33,10 +33,10 @@ void Game::Init()
 	GameLevel two;
 	GameLevel three;
 	GameLevel four;
-	one.Load("levels/one.lvl", this->Width, this->Height / 2);
-	two.Load("levels/two.lvl", this->Width, this->Height / 2);
-	three.Load("levels/three.lvl", this->Width, this->Height / 2);
-	four.Load("levels/four.lvl", this->Width, this->Height / 2);
+	one.Load("levels/one.txt", this->Width, this->Height / 2);
+	two.Load("levels/two.txt", this->Width, this->Height / 2);
+	three.Load("levels/three.txt", this->Width, this->Height / 2);
+	four.Load("levels/four.txt", this->Width, this->Height / 2);
 	this->Levels.push_back(one);
 	this->Levels.push_back(two);
 	this->Levels.push_back(three);
