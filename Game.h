@@ -13,6 +13,11 @@ enum GameState {
 	GAME_WIN
 };
 
+
+const glm::vec2 PLAYER_SIZE(100.0f, 20.0f); //initial size of the player
+const float PLAYER_VELOCITY(500.0f);		//initial player velocity
+
+
 class Game {
 public:	
 	GameState			   State;

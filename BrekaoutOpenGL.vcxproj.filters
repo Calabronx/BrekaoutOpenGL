@@ -72,6 +72,9 @@
     <ClCompile Include="game_object.cpp">
       <Filter>Source Files\src\util</Filter>
     </ClCompile>
+    <ClCompile Include="ball_object.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glm\glm.hpp">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="game_object.h">
       <Filter>Source Files\src\util</Filter>
+    </ClInclude>
+    <ClInclude Include="ball_object.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
