@@ -75,6 +75,9 @@
     <ClCompile Include="ball_object.cpp">
       <Filter>Source Files\src\util</Filter>
     </ClCompile>
+    <ClCompile Include="particle_generator.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glm\glm.hpp">
@@ -113,20 +116,18 @@
     <ClInclude Include="ball_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="sprite.frag">
-      <Filter>Source Files\src</Filter>
-    </None>
-    <None Include="sprite.vs">
-      <Filter>Source Files\src</Filter>
-    </None>
+    <ClInclude Include="particle_generator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Documents\Libros\OpenGL\texture\awesomeface.png">
       <Filter>Source Files</Filter>
     </Image>
     <Image Include="awesomeface.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="textures\particle.png">
       <Filter>Source Files</Filter>
     </Image>
   </ItemGroup>
@@ -143,5 +144,19 @@
     <Text Include="levels\four.lvl.txt">
       <Filter>Source Files\src\levels</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\sprite.vs">
+      <Filter>Source Files\src\shaders</Filter>
+    </None>
+    <None Include="shaders\sprite.frag">
+      <Filter>Source Files\src\shaders</Filter>
+    </None>
+    <None Include="particle.vs">
+      <Filter>Source Files\src\shaders</Filter>
+    </None>
+    <None Include="particle.frag">
+      <Filter>Source Files\src\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

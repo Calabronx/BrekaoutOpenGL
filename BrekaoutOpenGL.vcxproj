@@ -143,6 +143,7 @@
     <ClCompile Include="ball_object.cpp" />
     <ClCompile Include="game_level.cpp" />
     <ClCompile Include="game_object.cpp" />
+    <ClCompile Include="particle_generator.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="glad\glad.c" />
@@ -163,21 +164,25 @@
     <ClInclude Include="includes\shader.h" />
     <ClInclude Include="includes\stb_image.h" />
     <ClInclude Include="includes\texture.h" />
+    <ClInclude Include="particle_generator.h" />
     <ClInclude Include="sprite_renderer.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="sprite.frag" />
-    <None Include="sprite.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Documents\Libros\OpenGL\texture\awesomeface.png" />
     <Image Include="awesomeface.png" />
+    <Image Include="textures\particle.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="levels\four.lvl.txt" />
     <Text Include="levels\one.lvl.txt" />
     <Text Include="levels\three.lvl.txt" />
     <Text Include="levels\two.lvl.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="particle.frag" />
+    <None Include="particle.vs" />
+    <None Include="shaders\sprite.frag" />
+    <None Include="shaders\sprite.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
