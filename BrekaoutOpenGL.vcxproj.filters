@@ -45,9 +45,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="glad\glad.c">
-      <Filter>Source Files\src</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files\src\core</Filter>
     </ClCompile>
@@ -78,57 +75,66 @@
     <ClCompile Include="particle_generator.cpp">
       <Filter>Source Files\src\util</Filter>
     </ClCompile>
+    <ClCompile Include="glad\glad.c">
+      <Filter>Source Files\src\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="postprocessor.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="glm\glm.hpp">
-      <Filter>Source Files\src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="glad\KHR\khrplatform.h">
-      <Filter>Source Files\src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\stb_image.h">
-      <Filter>Source Files\src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="sprite_renderer.h">
-      <Filter>Source Files\src\util</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\resource_manager.h">
-      <Filter>Source Files\src\util</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\texture.h">
-      <Filter>Source Files\src\util</Filter>
-    </ClInclude>
-    <ClInclude Include="includes\shader.h">
-      <Filter>Source Files\src\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="glad\glad.h">
-      <Filter>Source Files\src</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Source Files\src\core</Filter>
-    </ClInclude>
-    <ClInclude Include="game_level.h">
-      <Filter>Source Files\src\util</Filter>
-    </ClInclude>
-    <ClInclude Include="game_object.h">
-      <Filter>Source Files\src\util</Filter>
-    </ClInclude>
     <ClInclude Include="ball_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="particle_generator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="game_level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\resource_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sprite_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glad\glad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glm\glm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glad\KHR\khrplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="postprocessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Documents\Libros\OpenGL\texture\awesomeface.png">
-      <Filter>Source Files</Filter>
+    <Image Include="textures\particle.png">
+      <Filter>Source Files\src\textures</Filter>
     </Image>
     <Image Include="awesomeface.png">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\src\textures</Filter>
     </Image>
-    <Image Include="textures\particle.png">
-      <Filter>Source Files</Filter>
+    <Image Include="..\..\..\..\Documents\Libros\OpenGL\texture\awesomeface.png">
+      <Filter>Source Files\src\textures</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +162,12 @@
       <Filter>Source Files\src\shaders</Filter>
     </None>
     <None Include="particle.frag">
+      <Filter>Source Files\src\shaders</Filter>
+    </None>
+    <None Include="shaders\postprocessing.frag">
+      <Filter>Source Files\src\shaders</Filter>
+    </None>
+    <None Include="shaders\postprocessing.vs">
       <Filter>Source Files\src\shaders</Filter>
     </None>
   </ItemGroup>
