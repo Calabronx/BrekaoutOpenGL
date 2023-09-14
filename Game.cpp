@@ -3,14 +3,18 @@
 #include "sprite_renderer.h"
 #include "ball_object.h"
 #include "particle_generator.h"
+#include "postprocessor.h"
 
 // Game related State data
 SpriteRenderer		*Renderer;
 GameObject			*Player;
 ParticleGenerator	*Particles;
+PostProcessor* Effects;
 
 const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
 const float BALL_RADIUS = 12.5f;
+
+float ShakeTime = 0.0f;
 
 typedef std::tuple<bool, Direction, glm::vec2> Collision;
 
@@ -47,10 +51,10 @@ void Game::Init()
 	ResourceManager::LoadTexture("textures/block_solid.png", true, "block_solid");
 	ResourceManager::LoadTexture("textures/paddle.png", true, "paddle");
 	ResourceManager::LoadTexture("textures/particle.png", true, "particle");
-
+	// set render-specific controls
 	Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 	Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 800);
-
+	Effects = new PostProcessor(ResourceManager::GetShader("postprocessing"), this->Width, this->Height);
 	// load levels
 	GameLevel one;
 	GameLevel two;
@@ -65,7 +69,7 @@ void Game::Init()
 	this->Levels.push_back(three);
 	this->Levels.push_back(four);
 	this->Level = 0;
-
+	// configure game objects
 	glm::vec2 playerPos = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f,this->Height - PLAYER_SIZE.y);
 	Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
@@ -112,12 +116,20 @@ void Game::Update(float dt)
 		this->ResetLevel();
 		this->ResetPlayer();
 	}
+
+	if(ShakeTime > 0.0f)
+	{
+		ShakeTime -= dt;
+		if (ShakeTime <= 0.0f)
+			Effects->Shake = false;
+	}
 }
 
 void Game::Render()
 {
 	if (this->State == GAME_ACTIVE)
 	{
+		Effects->BeginRender();
 		//draw background
 		Renderer->DrawSprite(ResourceManager::GetTexture("background"),
 			glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
@@ -127,6 +139,8 @@ void Game::Render()
 		Player->Draw(*Renderer);	 //draw player
 		Particles->Draw();  //draw particles
 		Ball->Draw(*Renderer);	     //draw ball
+		Effects->EndRender();
+		Effects->Render((float)glfwGetTime());
 	}
 }
 
@@ -228,6 +242,8 @@ void Game::DoCollisions()
 				}
 				else // vertical collision
 				{
+					ShakeTime = 0.05f;     //time effect
+					Effects->Shake = true;// if block is solid, enable shake effect
 					Ball->Velocity.y = -Ball->Velocity.y; // reverse vertical velocity
 					float penetration = Ball->Radius - std::abs(diff_vector.y);
 					if (dir == UP)
