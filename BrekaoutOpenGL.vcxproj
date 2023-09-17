@@ -145,6 +145,7 @@
     <ClCompile Include="game_object.cpp" />
     <ClCompile Include="particle_generator.cpp" />
     <ClCompile Include="postprocessor.cpp" />
+    <ClCompile Include="power_up.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="glad\glad.c" />
@@ -167,6 +168,7 @@
     <ClInclude Include="includes\texture.h" />
     <ClInclude Include="particle_generator.h" />
     <ClInclude Include="postprocessor.h" />
+    <ClInclude Include="power_up.h" />
     <ClInclude Include="sprite_renderer.h" />
   </ItemGroup>
   <ItemGroup>
