@@ -31,12 +31,14 @@ Game::~Game()
 	delete Player;
 	delete Ball;
 	delete Particles;
+	delete Effects;
 }
 
 void Game::Init()
 {
 	ResourceManager::LoadShader("shaders/sprite.vs", "shaders/sprite.frag", nullptr, "sprite");
 	ResourceManager::LoadShader("shaders/particle.vs", "shaders/particle.frag", nullptr, "particle");
+	ResourceManager::LoadShader("shaders/postprocessing.vs", "shaders/postprocessing.frag", nullptr, "postprocessing");
 
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width), static_cast<float>(this->Height),
 		0.0f, -1.0f, 1.0f);
