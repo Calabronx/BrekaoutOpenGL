@@ -119,16 +119,12 @@ void Game::ProcessInput(float dt)
 
 void Game::Update(float dt)
 {
-	Ball->Move(dt, this->Width);
-	this->DoCollisions();
+	Ball->Move(dt, this->Width); // update objects
+	this->DoCollisions(); // check for collisions
 
-	Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
+	Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f)); // update particles
 
-	if (Ball->Position.y >= this->Height)
-	{
-		this->ResetLevel();
-		this->ResetPlayer();
-	}
+	this->UpdatePowerUps(dt); // update power ups
 
 	if (ShakeTime > 0.0f)
 	{
@@ -136,6 +132,13 @@ void Game::Update(float dt)
 		if (ShakeTime <= 0.0f)
 			Effects->Shake = false;
 	}
+	// check loss condition
+	if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
+	{
+		this->ResetLevel();
+		this->ResetPlayer();
+	}
+
 }
 
 void Game::Render()
@@ -144,17 +147,17 @@ void Game::Render()
 	{
 		Effects->BeginRender();
 		//draw background
-		Renderer->DrawSprite(ResourceManager::GetTexture("background"),
+			Renderer->DrawSprite(ResourceManager::GetTexture("background"),
 			glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
-		//draw level
-		this->Levels[this->Level].Draw(*Renderer);
+			//draw level
+			this->Levels[this->Level].Draw(*Renderer);
 
-		Player->Draw(*Renderer);	 //draw player
-		for (PowerUp& powerUp : this->PowerUps)
-			if (!powerUp.Destroyed)
-				powerUp.Draw(*Renderer); //draw powerups
-		Particles->Draw();  //draw particles
-		Ball->Draw(*Renderer);	     //draw ball
+			Player->Draw(*Renderer);	 //draw player
+			for (PowerUp& powerUp : this->PowerUps)
+				if (!powerUp.Destroyed)
+					powerUp.Draw(*Renderer); //draw powerups
+			Particles->Draw();  //draw particles
+			Ball->Draw(*Renderer);	     //draw ball
 		Effects->EndRender();
 		Effects->Render((float)glfwGetTime());
 	}
@@ -274,12 +277,19 @@ void Game::DoCollisions()
 			Collision collision = CheckCollision(*Ball, box);
 			if (std::get<0>(collision)) // if collision is true
 			{
-				if (!box.IsSolid)// destroy block if not solid
+				if (!box.IsSolid) { // destroy block if not solid
 					box.Destroyed = true;
-				this->SpawnPowerUps(box);
+					this->SpawnPowerUps(box);
+				}
+				else {
+					//if block is solid, enable shake effect
+					ShakeTime = 0.05f;
+					Effects->Shake = true;
+				}
+				//collision resolution
 				Direction dir = std::get<1>(collision);
 				glm::vec2 diff_vector = std::get<2>(collision);
-				if (!(Ball->PassThrough && !box.IsSolid)) {
+				if (!(Ball->PassThrough && !box.IsSolid)) { // dont do collision resolution on non-solid bricks if pass-through is activated
 					if (dir == LEFT || dir == RIGHT) // horizontal collision
 					{
 						Ball->Velocity.x = -Ball->Velocity.x; // reverse horizontal velocity
@@ -292,8 +302,6 @@ void Game::DoCollisions()
 					}
 					else // vertical collision
 					{
-						ShakeTime = 0.05f;     //time effect
-						Effects->Shake = true;// if block is solid, enable shake effect
 						Ball->Velocity.y = -Ball->Velocity.y; // reverse vertical velocity
 						float penetration = Ball->Radius - std::abs(diff_vector.y);
 						if (dir == UP)
@@ -304,21 +312,22 @@ void Game::DoCollisions()
 				}
 			}
 		}
+		// also check collisions on Powerups and if so, activate them
 		for (PowerUp& powerUp : this->PowerUps) {
 			if (!powerUp.Destroyed)
 			{
-				if (powerUp.Position.y >= this->Height)
+				if (powerUp.Position.y >= this->Height) //first check if powerup passed bottom edge, if so: keep as inactive and destroyed
 					powerUp.Destroyed = true;
-				if (CheckCollision(*Player, powerUp))
+				if (CheckCollision(*Player, powerUp)) {
 					//collided with player, now activate powerup
 					ActivatePowerUp(powerUp);
-				powerUp.Destroyed = true;
-				powerUp.Activated = true;
+					powerUp.Destroyed = true;
+					powerUp.Activated = true;
+				}
 			}
 		}
 	}
-	Collision result = CheckCollision(*Ball, *Player);
-
+	Collision result = CheckCollision(*Ball, *Player); // and finally check collisions for player pad(unsless stuck)
 	if (!Ball->Stuck && std::get<0>(result))
 	{
 		float centerBoard = Player->Position.x + Player->Size.x / 2.0f; // check where it hit the board, and change velocity based on where it hit the board
