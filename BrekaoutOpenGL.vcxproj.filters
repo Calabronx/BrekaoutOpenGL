@@ -131,6 +131,9 @@
     <ClInclude Include="power_up.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="includes\irrKlang.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\particle.png">

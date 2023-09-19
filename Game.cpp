@@ -7,13 +7,16 @@
 #include "particle_generator.h"
 #include "postprocessor.h"
 #include "power_up.h"
+#include "irrKlang.h"
+using namespace irrklang;
+
 
 // Game related State data
 SpriteRenderer* Renderer;
 GameObject* Player;
 ParticleGenerator* Particles;
 PostProcessor* Effects;
-//PowerUp* PowerUps;
+ISoundEngine* SoundEngine = createIrrKlangDevice();
 
 const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
 const float BALL_RADIUS = 12.5f;
@@ -36,6 +39,7 @@ Game::~Game()
 	delete Ball;
 	delete Particles;
 	delete Effects;
+	SoundEngine->drop();
 }
 
 void Game::Init()
@@ -87,6 +91,8 @@ void Game::Init()
 	Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
 	glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -BALL_RADIUS * 2.0f);
 	Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
+	//audio
+	SoundEngine->play2D("audio/breakout.mp3", true);
 }
 
 void Game::ProcessInput(float dt)
@@ -280,11 +286,13 @@ void Game::DoCollisions()
 				if (!box.IsSolid) { // destroy block if not solid
 					box.Destroyed = true;
 					this->SpawnPowerUps(box);
+					SoundEngine->play2D("audio/beep.mp3", false);
 				}
 				else {
 					//if block is solid, enable shake effect
 					ShakeTime = 0.05f;
 					Effects->Shake = true;
+					SoundEngine->play2D("audio/solid.wav", false);
 				}
 				//collision resolution
 				Direction dir = std::get<1>(collision);
@@ -323,6 +331,7 @@ void Game::DoCollisions()
 					ActivatePowerUp(powerUp);
 					powerUp.Destroyed = true;
 					powerUp.Activated = true;
+					SoundEngine->play2D("audio/powerup.wav", false);
 				}
 			}
 		}
@@ -341,6 +350,8 @@ void Game::DoCollisions()
 		Ball->Velocity.y = -1.0f * abs(Ball->Velocity.y);
 		Ball->Velocity = glm::normalize(Ball->Velocity) * glm::length(oldVelocity);
 		Ball->Stuck = Ball->Sticky;
+
+		SoundEngine->play2D("audio/bleep.wav", false);
 	}
 
 }
