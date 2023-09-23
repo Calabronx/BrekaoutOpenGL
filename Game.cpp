@@ -10,6 +10,8 @@
 #include "irrKlang.h"
 #include "text_renderer.h"
 
+#include <sstream>
+
 using namespace irrklang;
 
 
@@ -31,7 +33,7 @@ typedef std::tuple<bool, Direction, glm::vec2> Collision;
 BallObject* Ball;
 
 Game::Game(unsigned int width, unsigned int height)
-	: State(GAME_ACTIVE), Keys(), Width(width), Height(height)
+	: State(GAME_ACTIVE), Keys(), Width(width), Height(height), Lives(3)
 {
 }
 
@@ -105,6 +107,19 @@ void Game::ProcessInput(float dt)
 	if (this->State == GAME_ACTIVE)
 	{
 		float velocity = PLAYER_VELOCITY * dt;
+
+		if (this->Keys[GLFW_KEY_ENTER])
+			this->State = GAME_ACTIVE;
+		if (this->Keys[GLFW_KEY_W])
+			this->Level = (this->Level + 1) % 4;
+		if (this->Keys[GLFW_KEY_S])
+		{
+			if (this->Level > 0)
+				--this->Level;
+			else
+				this->Level = 3;
+		}
+
 		//move
 		if (this->Keys[GLFW_KEY_A])
 		{
@@ -146,15 +161,20 @@ void Game::Update(float dt)
 	// check loss condition
 	if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
 	{
-		this->ResetLevel();
-		this->ResetPlayer();
+		--this->Lives;
+		if (this->Lives <= 0) { // did the player lose all his lives? : Game over
+			this->ResetLevel();
+			this->State = GAME_MENU;
+		}
+			this->ResetPlayer();
 	}
+
 
 }
 
 void Game::Render()
 {
-	if (this->State == GAME_ACTIVE)
+	if (this->State == GAME_ACTIVE || this->State == GAME_MENU)
 	{
 		Effects->BeginRender();
 		//draw background
@@ -171,6 +191,14 @@ void Game::Render()
 			Ball->Draw(*Renderer);	     //draw ball
 		Effects->EndRender();
 		Effects->Render((float)glfwGetTime());
+
+		std::stringstream ss;ss << this->Lives;
+		Text->RenderText("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f);
+	}
+	if (this->State == GAME_MENU)
+	{
+		Text->RenderText("Press ENTER to start Breakout", 250.0f, Height / 2, 1.0f);
+		Text->RenderText("Press W or S to select level", 245.0f, Height / 2 + 20.0f, 0.75f);
 	}
 }
 
@@ -184,6 +212,7 @@ void Game::ResetLevel()
 		this->Levels[2].Load("levels/three.txt", this->Width, this->Height / 2);
 	else if (this->Level == 3)
 		this->Levels[3].Load("levels/four.txt", this->Width, this->Height / 2);
+	this->Lives = 3;
 }
 
 //resets player//ball stats
