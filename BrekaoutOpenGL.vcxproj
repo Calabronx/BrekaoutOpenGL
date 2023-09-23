@@ -72,10 +72,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\irrKlang\lib\Winx64-visualStudio;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\irrKlang\include;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\includes;C:\BrekaoutOpenGL\lib;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\freetype\include\freetype;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\includes\freetype-2.13.2\include;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\irrKlang\include;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\includes;C:\BrekaoutOpenGL\lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\irrKlang\include;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\includes;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\freetype\include\freetype;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\includes\freetype-2.13.2\include;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\irrKlang\include;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\includes;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\irrKlang\lib\Winx64-visualStudio;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\glm;C:\Users\sebas\Documents\Libros\OpenGL\libs\glfw-3.3.8.bin.WIN64\include;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\freetype;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\glm;C:\Users\sebas\Documents\Libros\OpenGL\libs\glfw-3.3.8.bin.WIN64\include;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,7 +129,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\glm;C:\Users\sebas\Documents\Libros\OpenGL\libs\glfw-3.3.8.bin.WIN64\include;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\freetype;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\glm;C:\Users\sebas\Documents\Libros\OpenGL\libs\glfw-3.3.8.bin.WIN64\include;C:\Users\sebas\Projects\GameDev\BrekaoutOpenGL\BrekaoutOpenGL\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,9 +154,12 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="sprite_renderer.cpp" />
     <ClCompile Include="texture.cpp" />
+    <ClCompile Include="text_renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ball_object.h" />
+    <ClInclude Include="freetype\include\freetype\config\ftheader.h" />
+    <ClInclude Include="ft2build.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="game_level.h" />
     <ClInclude Include="game_object.h" />
@@ -172,6 +175,7 @@
     <ClInclude Include="postprocessor.h" />
     <ClInclude Include="power_up.h" />
     <ClInclude Include="sprite_renderer.h" />
+    <ClInclude Include="text_renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Documents\Libros\OpenGL\texture\awesomeface.png" />
@@ -191,6 +195,8 @@
     <None Include="shaders\postprocessing.vs" />
     <None Include="shaders\sprite.frag" />
     <None Include="shaders\sprite.vs" />
+    <None Include="text_2d.fs" />
+    <None Include="text_2d.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

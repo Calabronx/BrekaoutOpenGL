@@ -84,6 +84,9 @@
     <ClCompile Include="power_up.cpp">
       <Filter>Source Files\src\util</Filter>
     </ClCompile>
+    <ClCompile Include="text_renderer.cpp">
+      <Filter>Source Files\src\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ball_object.h">
@@ -134,6 +137,15 @@
     <ClInclude Include="includes\irrKlang.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="text_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ft2build.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="freetype\include\freetype\config\ftheader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\particle.png">
@@ -177,6 +189,12 @@
       <Filter>Source Files\src\shaders</Filter>
     </None>
     <None Include="shaders\postprocessing.vs">
+      <Filter>Source Files\src\shaders</Filter>
+    </None>
+    <None Include="text_2d.vs">
+      <Filter>Source Files\src\shaders</Filter>
+    </None>
+    <None Include="text_2d.fs">
       <Filter>Source Files\src\shaders</Filter>
     </None>
   </ItemGroup>

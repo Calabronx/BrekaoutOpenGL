@@ -376,3 +376,4 @@ FodyWeavers.xsd
 /glm/.gitignore
 /glm/.appveyor.yml
 /irrKlang
+/freetype

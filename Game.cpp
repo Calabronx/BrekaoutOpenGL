@@ -8,15 +8,18 @@
 #include "postprocessor.h"
 #include "power_up.h"
 #include "irrKlang.h"
+#include "text_renderer.h"
+
 using namespace irrklang;
 
 
 // Game related State data
-SpriteRenderer* Renderer;
-GameObject* Player;
-ParticleGenerator* Particles;
-PostProcessor* Effects;
-ISoundEngine* SoundEngine = createIrrKlangDevice();
+SpriteRenderer    *Renderer;
+GameObject        *Player;
+ParticleGenerator *Particles;
+PostProcessor	  *Effects;
+ISoundEngine	  *SoundEngine = createIrrKlangDevice();
+TextRenderer	  *Text;
 
 const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
 const float BALL_RADIUS = 12.5f;
@@ -72,6 +75,8 @@ void Game::Init()
 	Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
 	Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 800);
 	Effects = new PostProcessor(ResourceManager::GetShader("postprocessing"), this->Width, this->Height);
+	Text = new TextRenderer(this->Width, this->Height);
+	Text->Load("fonts/ocratext.TTF", 24);
 	// load levels
 	GameLevel one;
 	GameLevel two;
@@ -286,7 +291,7 @@ void Game::DoCollisions()
 				if (!box.IsSolid) { // destroy block if not solid
 					box.Destroyed = true;
 					this->SpawnPowerUps(box);
-					SoundEngine->play2D("audio/beep.mp3", false);
+					SoundEngine->play2D("audio/bleep.mp3", false);
 				}
 				else {
 					//if block is solid, enable shake effect
