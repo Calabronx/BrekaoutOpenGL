@@ -30,6 +30,7 @@ class Game {
 public:	
 	GameState			   State;
 	bool				   Keys[1024];
+	bool				   KeysProcessed[1024];
 	std::vector<GameLevel> Levels;
 	std::vector<PowerUp>   PowerUps;
 	unsigned int		   Level;

@@ -14,14 +14,13 @@
 
 using namespace irrklang;
 
-
 // Game related State data
-SpriteRenderer    *Renderer;
-GameObject        *Player;
-ParticleGenerator *Particles;
-PostProcessor	  *Effects;
-ISoundEngine	  *SoundEngine = createIrrKlangDevice();
-TextRenderer	  *Text;
+SpriteRenderer		*Renderer;
+GameObject			*Player;
+ParticleGenerator	*Particles;
+PostProcessor		*Effects;
+ISoundEngine		*SoundEngine = createIrrKlangDevice();
+TextRenderer		*Text;
 
 const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
 const float BALL_RADIUS = 12.5f;
@@ -33,7 +32,7 @@ typedef std::tuple<bool, Direction, glm::vec2> Collision;
 BallObject* Ball;
 
 Game::Game(unsigned int width, unsigned int height)
-	: State(GAME_ACTIVE), Keys(), Width(width), Height(height), Lives(3)
+	: State(GAME_MENU), Keys(), Width(width), Height(height), Lives(3)
 {
 }
 
@@ -100,26 +99,45 @@ void Game::Init()
 	Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY, ResourceManager::GetTexture("face"));
 	//audio
 	SoundEngine->play2D("audio/breakout.mp3", true);
+
 }
 
 void Game::ProcessInput(float dt)
 {
-	if (this->State == GAME_ACTIVE)
+	if (this->State == GAME_MENU)
 	{
-		float velocity = PLAYER_VELOCITY * dt;
 
-		if (this->Keys[GLFW_KEY_ENTER])
+		if (this->Keys[GLFW_KEY_ENTER] && !this->KeysProcessed[GLFW_KEY_ENTER])
+		{
 			this->State = GAME_ACTIVE;
-		if (this->Keys[GLFW_KEY_W])
+			this->KeysProcessed[GLFW_KEY_ENTER] = true;
+		}
+
+		if (this->Keys[GLFW_KEY_W] && !this->KeysProcessed[GLFW_KEY_W]) {
 			this->Level = (this->Level + 1) % 4;
-		if (this->Keys[GLFW_KEY_S])
+			this->KeysProcessed[GLFW_KEY_W] = true;
+		}
+
+		if (this->Keys[GLFW_KEY_S] && !this->KeysProcessed[GLFW_KEY_S])
 		{
 			if (this->Level > 0)
 				--this->Level;
 			else
 				this->Level = 3;
+			this->KeysProcessed[GLFW_KEY_S] = true;
 		}
-
+	}
+	if (this->State == GAME_WIN)
+	{
+		if (this->Keys[GLFW_KEY_ENTER])
+		{
+			this->KeysProcessed[GLFW_KEY_ENTER] = true;
+			Effects->Chaos = false;
+			this->State = GAME_MENU;
+		}
+	}
+	if (this->State == GAME_ACTIVE) {
+		float velocity = PLAYER_VELOCITY * dt;
 		//move
 		if (this->Keys[GLFW_KEY_A])
 		{
@@ -140,8 +158,8 @@ void Game::ProcessInput(float dt)
 		if (this->Keys[GLFW_KEY_SPACE])
 			Ball->Stuck = false;
 	}
-
 }
+
 
 void Game::Update(float dt)
 {
@@ -166,9 +184,16 @@ void Game::Update(float dt)
 			this->ResetLevel();
 			this->State = GAME_MENU;
 		}
-			this->ResetPlayer();
+		this->ResetPlayer();
 	}
-
+	// check win condition
+	if (this->State == GAME_ACTIVE && this->Levels[this->Level].IsCompleted()) 
+	{
+		this->ResetLevel();
+		this->ResetPlayer();
+		Effects->Chaos = true;
+		this->State = GAME_WIN;
+	}
 
 }
 
@@ -178,27 +203,33 @@ void Game::Render()
 	{
 		Effects->BeginRender();
 		//draw background
-			Renderer->DrawSprite(ResourceManager::GetTexture("background"),
+		Renderer->DrawSprite(ResourceManager::GetTexture("background"),
 			glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f);
-			//draw level
-			this->Levels[this->Level].Draw(*Renderer);
+		//draw level
+		this->Levels[this->Level].Draw(*Renderer);
 
-			Player->Draw(*Renderer);	 //draw player
-			for (PowerUp& powerUp : this->PowerUps)
-				if (!powerUp.Destroyed)
-					powerUp.Draw(*Renderer); //draw powerups
-			Particles->Draw();  //draw particles
-			Ball->Draw(*Renderer);	     //draw ball
+		Player->Draw(*Renderer);	 //draw player
+		for (PowerUp& powerUp : this->PowerUps)
+			if (!powerUp.Destroyed)
+				powerUp.Draw(*Renderer); //draw powerups
+		Particles->Draw();  //draw particles
+		Ball->Draw(*Renderer);	     //draw ball
 		Effects->EndRender();
 		Effects->Render((float)glfwGetTime());
 
-		std::stringstream ss;ss << this->Lives;
+		std::stringstream ss; ss << this->Lives;
 		Text->RenderText("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f);
 	}
 	if (this->State == GAME_MENU)
 	{
-		Text->RenderText("Press ENTER to start Breakout", 250.0f, Height / 2, 1.0f);
+		Text->RenderText("Press ENTER to start", 250.0f, Height / 2, 1.0f);
 		Text->RenderText("Press W or S to select level", 245.0f, Height / 2 + 20.0f, 0.75f);
+	}
+
+	if (this->State == GAME_WIN)
+	{
+		Text->RenderText("You WON!!!", 320.0, Height / 2 - 20.0, 1.0, glm::vec3(0.0, 1.0, 0.0));
+		Text->RenderText("Press ENTER to retry or ESC to quit", 130.0, Height / 2, 1.0, glm::vec3(1.0, 1.0, 0.0));
 	}
 }
 
@@ -305,6 +336,8 @@ void ActivatePowerUp(PowerUp& powerUp)
 	{
 		if (!Effects->Confuse)
 			Effects->Chaos = true;
+			/*SoundEngine->stopAllSounds();
+			SoundEngine->play2D("audio/Sonic-Chaos.mp3", true);*/
 	}
 }
 

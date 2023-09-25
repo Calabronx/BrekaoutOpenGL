@@ -377,3 +377,4 @@ FodyWeavers.xsd
 /glm/.appveyor.yml
 /irrKlang
 /freetype
+/audio
